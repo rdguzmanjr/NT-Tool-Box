@@ -11,6 +11,11 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '',
+      name: 'home',
+      component: HomeView
+    },
+    {
       path: '/gettransformorigin',
       name: 'gettransformorigin',
       component: TransformOrigin
