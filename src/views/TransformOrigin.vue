@@ -19,7 +19,7 @@ const onDrop=(e)=>{
             reader.onload = function(event) {
                 const img = document.createElement('img');
                 img.src = event.target.result; 
-                transImages.value.push(img)           
+                transImages.value.push({img:img,filename:file.name})           
             
             };
             try {
@@ -112,7 +112,7 @@ const emit = defineEmits(['closeMenuBar'])
                 @enter="onImgEnter"
                 @leave="onImgLeave"
                 >
-                <TransformOriginImg :img="transImg" v-for="(transImg,index) in transImages" :key="index"/>
+                <TransformOriginImg :img="transImg.img" :filename="transImg.filename" v-for="(transImg,index) in transImages" :key="index"/>
             </TransitionGroup>
         </div>
     

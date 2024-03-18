@@ -65,19 +65,20 @@ const getPNGOrigin=(imgElem)=>{
     return {originX:originX,originY:originY,ptop:ptop,pright:pright,pbottom:pbottom,pleft:pleft}
 }
 const imginfo=ref({})
-
+const showinfo=ref(false)
 onMounted(()=>{
     imginfo.value=getPNGOrigin(props.img)
 })
 
-const props=defineProps({img:Object})
+const props=defineProps({img:Object,filename:String})
 
 </script>
 
 <template>
-    <div class="w-80 h-auto md:w-72">
-        <TransformOriginInfo :imginfo="imginfo"/>
-        <canvas ref="image" class="w-full"></canvas>
+    <div class="w-80 h-auto md:w-72" @mouseenter="showinfo=!showinfo" @mouseleave="showinfo=!showinfo">
+        <span class="text-white text-xs drop-shadow-lg bg-black bg-opacity-60">{{ props.filename }}</span>
+        <TransformOriginInfo :imginfo="imginfo" v-if="showinfo"/>
+        <canvas ref="image" class="w-full" ></canvas>
     </div>
 </template>
 
