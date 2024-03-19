@@ -11,10 +11,11 @@ const handleCopyBounds=()=>{
     navigator.clipboard.writeText(pbounds.value.textContent)
 }
 const props=defineProps({imginfo:Object})
+
 </script>
 
 <template>
-    <div class="absolute w-80 h-auto md:w-72 bg-black bg-opacity-70 ">
+    <div class="absolute w-80 h-auto  bg-black bg-opacity-70 z-50">
         <div class="text-white text-xs mx-2 my-2 space-y-2">
             <div class="flex flex-row justify-between ">
                 <p ref="porigin">transformOrigin:'{{imginfo.originX}}% {{imginfo.originY}}%'</p><button class="w-12 bg-green-600 hover:bg-green-500 active:ring-green-200 ring-2 ring-transparent rounded-sm" @click="handleCopyOrigin">copy</button>
