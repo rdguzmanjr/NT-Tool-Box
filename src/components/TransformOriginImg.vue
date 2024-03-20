@@ -116,10 +116,10 @@ onMounted(()=>{
 })
 
 const mapToPercentageX = (value) => {
-    return Math.abs(((value-((bound.right-bound.left)/2)))/(bound.right-bound.left))*100
+    return (((bound.right + bound.left)/2)/image.value.width - (value/image.value.width)) * 100;
 }
 const mapToPercentageY = (value) => {
-    return Math.abs(((value-((bound.bottom-bound.top)/2)))/(bound.bottom-bound.top))*100
+    return (((bound.top + bound.bottom)/2)/image.value.height - (value/image.value.height)) * 100;
 }
 //dragging function
 const moveCanvas=(e)=>{
