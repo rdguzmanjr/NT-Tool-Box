@@ -1,7 +1,7 @@
 <script setup>
 import {ref} from 'vue'
 import { RouterLink } from 'vue-router';
-
+import box from '../components/icons/box.vue'
 const toggleOpen=ref(false)
 
 const toggleMenu=()=>{
@@ -31,9 +31,8 @@ defineExpose({toggleOpen})
       </div>
     </div>
     <RouterLink :to="'/'" v-show="title!='' && title!=null" class="flex bg-greentool w-36 h-9 rounded-2xl items-center justify-center text-white md:w-52 lg:w-64 font-bold">
-          {{title}}
+        <span>{{title}}  <box class="hidden md:inline"></box></span> 
       </RouterLink>
-   
 </div>
 
 </template>
