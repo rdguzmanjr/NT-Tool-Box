@@ -18,10 +18,10 @@ const props=defineProps({imginfo:Object})
     <div class="absolute w-80 h-auto  bg-black bg-opacity-70 z-50">
         <div class="text-white text-xs mx-2 my-2 space-y-2">
             <div class="flex flex-row justify-between ">
-                <p ref="porigin">transformOrigin:'{{imginfo.originX}}% {{imginfo.originY}}%'</p><button class="w-12 bg-green-600 hover:bg-green-500 active:ring-green-200 ring-2 ring-transparent rounded-sm" @click="handleCopyOrigin">copy</button>
+                <p ref="porigin">transformOrigin:'{{imginfo.originX}}% {{imginfo.originY}}%'</p><button class="w-12 bg-greentool hover:bg-graytool active:ring-white ring-2 ring-transparent rounded-sm" @click="handleCopyOrigin">copy</button>
             </div>
             <div class="flex flex-row justify-between ">
-            <p ref="pbounds">top:{{imginfo.ptop}},right:{{imginfo.pright}},bottom:{{imginfo.pbottom}},left{{imginfo.pleft}}</p><button class="w-12 bg-green-600 hover:bg-green-500 active:ring-green-200 ring-2 ring-transparent rounded-sm" @click="handleCopyBounds">copy</button>
+            <p ref="pbounds">top:{{imginfo.ptop}},right:{{imginfo.pright}},bottom:{{imginfo.pbottom}},left{{imginfo.pleft}}</p><button class="w-12 bg-greentool hover:bg-graytool active:ring-white ring-2 ring-transparent rounded-sm" @click="handleCopyBounds">copy</button>
             </div>
         </div>
     </div>
