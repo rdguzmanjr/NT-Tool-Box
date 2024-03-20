@@ -11,7 +11,7 @@ const sidebar=ref(null);
 </script>
 
 <template>
-  <div id="container" class="flex flex-col justify-between h-dvh">
+  <div id="container" class="flex flex-col justify-between h-dvh w-dvw">
     <SideNavBAr ref='sidebar' :title="'NT TOOL BOX'" :tools="['Get Transform Origin','BW Generator']" />
     <RouterView @closeMenuBar="sidebar.toggleOpen=false"/>
     <FooterTool/>
