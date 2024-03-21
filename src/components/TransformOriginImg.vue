@@ -33,6 +33,7 @@ const imgObj={
     y:0
 }
 
+const commonsize=ref(true)
 const showinfo=ref(false)
 const image=ref(null)
 
@@ -104,6 +105,7 @@ const drawRedDot=(ctx,bound)=>{
 
 onMounted(()=>{
     ctxCanReact.c = image.value;
+    commonsize.value = props.img.width > props.img.height ? false : true;
     ctxCanReact.ctxImg= image.value.getContext("2d", {willReadFrequently:true,});
     image.value.width =  props.img.width;
     image.value.height = props.img.height;
@@ -155,11 +157,13 @@ const props=defineProps({img:Object,filename:String})
 </script>
 
 <template>
-    <div class="w-80 h-auto " @mouseenter="showinfo=!showinfo" @mouseleave="showinfo=!showinfo;isDragging=false">
+    <div class="w-80 h-fit" :class="{'w-5/12':!commonsize}" @mouseenter="showinfo=!showinfo" @mouseleave="showinfo=!showinfo;isDragging=false" >
+       
         <span class="text-white text-xs drop-shadow-lg bg-black bg-opacity-60">{{ props.filename }}</span>
-        <TransformOriginInfo :imginfo="imginfo" v-if="showinfo"/>
+        <TransformOriginInfo :imginfo="imginfo" :commonsize="commonsize" v-if="showinfo"/>
         <canvas ref="image" class="w-full" @mousemove='moveCanvas' @mouseup="upCanvas" @mousedown="downCanvas"></canvas>
-    </div>
+
+   </div>
 </template>
 
 <style scoped>
