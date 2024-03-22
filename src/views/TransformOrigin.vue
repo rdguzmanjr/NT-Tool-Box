@@ -89,7 +89,9 @@ const emit = defineEmits(['closeMenuBar'])
                 @enter="onImgEnter"
                 @leave="onImgLeave"
                 >
+                
                 <TransformOriginImg :img="transImg.img" :filename="transImg.filename" v-for="(transImg,index) in transImages" :key="index"/>
+                
             </TransitionGroup>
         </div>
     
