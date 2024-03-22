@@ -157,7 +157,7 @@ const props=defineProps({img:Object,filename:String})
 </script>
 
 <template>
-    <div class="w-80 h-fit" :class="{'w-5/12':!commonsize}" @mouseenter="showinfo=!showinfo" @mouseleave="showinfo=!showinfo;isDragging=false" >
+    <div class="w-80 h-fit" :class="{'w-6/12':!commonsize}" @mouseenter="showinfo=!showinfo" @mouseleave="showinfo=!showinfo;isDragging=false" >
        
         <span class="text-white text-xs drop-shadow-lg bg-black bg-opacity-60">{{ props.filename }}</span>
         <TransformOriginInfo :imginfo="imginfo" :commonsize="commonsize" v-if="showinfo"/>
