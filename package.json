@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "aws-sdk": "^2.1585.0",
     "gsap": "^3.12.5",
     "primevue": "^3.50.0",
     "vue": "^3.4.21",
