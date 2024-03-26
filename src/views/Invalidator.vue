@@ -7,7 +7,7 @@ import 'vue-toast-notification/dist/theme-sugar.css';
 import { ref,computed} from 'vue';
 
 
-const path = ref('test');
+const path = ref(null);
 const toast = useToast();
 
 import * as AWS from 'aws-sdk'; //fix bug import AWS from 'aws-sdk'
