@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
     "aws-sdk": "^2.1585.0",
     "gsap": "^3.12.5",
     "primevue": "^3.50.0",
