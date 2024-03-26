@@ -11,11 +11,11 @@ const path = ref('test');
 const toast = useToast();
 
 import AWS from 'aws-sdk';
-const key = import.meta.env.VITE_AWS_KEY;
-const secreteKey = import.meta.env.VITE_AWS_SECRET_KEY;
-const distributionId = import.meta.env.VITE_AWS_DISTRIBUTION_ID;
+const key = process.env.VITE_AWS_KEY;
+const secreteKey = process.env.VITE_AWS_SECRET_KEY;
+const distributionId = process.env.VITE_AWS_DISTRIBUTION_ID;
 
-
+console.log(key,secreteKey,distributionId);
 const cloudfront = new AWS.CloudFront({
     accessKeyId: key,
     secretAccessKey: secreteKey,
