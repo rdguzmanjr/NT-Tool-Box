@@ -12,7 +12,7 @@ const sidebar=ref(null);
 
 <template>
   <div id="container" class="flex flex-col justify-between h-dvh w-dvw">
-    <SideNavBAr ref='sidebar' :title="'J&N TOOL BOX'" :tools="['Get Transform Origin','BW Generator']" />
+    <SideNavBAr ref='sidebar' :title="'J&N TOOL BOX'" :tools="['Get Transform Origin','BW Generator','Invalidator']" />
     <RouterView @closeMenuBar="sidebar.toggleOpen=false"/>
     <FooterTool/>
   </div>
