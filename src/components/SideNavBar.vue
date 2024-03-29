@@ -18,7 +18,7 @@ defineExpose({toggleOpen})
 
 <template>
 
-  <div class="flex flex-row justify-between items-center mx-3 my-3">
+  <div class="flex flex-row justify-between items-center mx-5 my-3">
     <div class="relative inline-block text-left ">
       <button @click="toggleMenu" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-gray-100 focus:ring-greentool"> 
         Tools

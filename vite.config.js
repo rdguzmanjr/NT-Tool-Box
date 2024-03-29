@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import commonjs from '@rollup/plugin-commonjs'
 
+//fix for aws sdk with lower version of rollup in vite.
 export const updateCommonjsPlugin = () => {
   const commonJs22 = commonjs({
     include: [/node_modules/],

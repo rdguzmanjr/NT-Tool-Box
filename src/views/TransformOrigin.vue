@@ -70,31 +70,30 @@ const emit = defineEmits(['closeMenuBar'])
 </script>
 
 <template>
-    <!-- component -->
-    <div v-if="transImages.length==0" id="dropzone" class="flex items-center justify-center h-4/5" @drop.prevent.stop="onDrop" @dragleave.prevent.stop="onDragLeave" @dragover.prevent.stop="onDragOver">
+    <div class="space-y-10">
+    <div v-if="transImages.length==0" id="dropzone" class="flex items-center justify-center h-96" @drop.prevent.stop="onDrop" @dragleave.prevent.stop="onDragLeave" @dragover.prevent.stop="onDragOver">
         <div class="border-dashed border-2 rounded flex items-center justify-center h-1/2 w-1/2">
         <dropper/>
         <span class="block text-white">Drop your image files here</span>
         </div>
     </div>
-    <button v-if="transImages.length!=0" class="mb-12 self-center w-32 flex items-center px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-greentool ring-1 ring-transparent rounded-md hover:ring-white" @click="handleRefresh">     
+    <button v-if="transImages.length!=0" class="m-[auto] w-32 flex px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-greentool ring-1 ring-transparent rounded-md hover:ring-white" @click="handleRefresh">     
         <refresh/>
         <span class="mx-1">Refresh</span>
     </button>
   
-        <div v-if="transImages.length!=0" id="img-container" class="mx-5 mt-42 flex flex-row flex-wrap gap-14 justify-center">
-            <TransitionGroup
-                :css="false"
-                @before-enter="onBeforeImgEnter"
-                @enter="onImgEnter"
-                @leave="onImgLeave"
-                >
-                
-                <TransformOriginImg :img="transImg.img" :filename="transImg.filename" v-for="(transImg,index) in transImages" :key="index"/>
-                
-            </TransitionGroup>
-        </div>
-    
+    <div v-if="transImages.length!=0" id="img-container" class="flex flex-row flex-wrap space-x-10 gap-y-10 justify-start">
+        <TransitionGroup
+            :css="false"
+            @before-enter="onBeforeImgEnter"
+            @enter="onImgEnter"
+            @leave="onImgLeave"
+            >     
+            <TransformOriginImg :img="transImg.img" :filename="transImg.filename" v-for="(transImg,index) in transImages" :key="index"/>
+            
+        </TransitionGroup>
+    </div>
+</div>
 </template>
 <style scoped>
 </style>
