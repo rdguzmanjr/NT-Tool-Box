@@ -45,7 +45,7 @@ const loglatest = computed(() => {
 
 const _invalidate=async()=>{
     try {
-      //  const response = await cloudfront.createInvalidation(invalidateParams.value).promise();
+       const response = await cloudfront.createInvalidation(invalidateParams.value).promise();
         toast.success('Successfully Invalidated');
         postLogs({id:(loglatest.value[0].id+1),logname:path.value,logdate:'today'})
         fetchLogs();
