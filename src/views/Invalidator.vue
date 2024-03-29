@@ -45,9 +45,9 @@ const loglatest = computed(() => {
 
 const _invalidate=async()=>{
     try {
-       const response = await cloudfront.createInvalidation(invalidateParams.value).promise();
+        const response = await cloudfront.createInvalidation(invalidateParams.value).promise();
         toast.success('Successfully Invalidated');
-        postLogs({id:(loglatest.value[0].id+1),logname:path.value,logdate:'today'})
+        postLogs({logname:path.value})
         fetchLogs();
     } catch (err) {
         toast.error('Error in Invalidation');
@@ -92,6 +92,8 @@ onMounted(()=>{
                 
         </FloatLabel>
         <nicebutton btitle="Invalidate" @click="_invalidate"/>
-        <div id="log" class="text-xs" v-for="(log,index) in loglatest" :key="index">{{ log.logname }} {{ log.logdate }}</div>
+        <div id="log" class="flex justify-between text-xs w-full" v-for="(log,index) in loglatest" :key="index">
+            <p>{{ log.logname }}</p><p>{{ log.timestamp_column }}</p>
+        </div>
     </div>
 </template> 
