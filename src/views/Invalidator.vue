@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const path = ref(null);
 const toast = useToast();
-const renderURL='https://restapi-ynyh.onrender.com';
+const renderURL='https://restapi-neon.onrender.com';
 import * as AWS from 'aws-sdk'; //fix bug import AWS from 'aws-sdk'
 const key = import.meta.env.VITE_AWS_KEY;
 const secreteKey = import.meta.env.VITE_AWS_SECRET_KEY;
@@ -58,7 +58,6 @@ const fetchLogs=async()=>{
     try{
         console.log('Getting data....')
         const response = await axios.get(renderURL+'/logs');
-        console.log(response.data)
         logs.value= response.data;
     }catch(error){
         console.error('Error fetching logs:', error);

@@ -1,10 +1,28 @@
 <script setup>
-import {ref} from 'vue'
-import { RouterLink } from 'vue-router';
+
+import {ref,computed} from 'vue'
+import { RouterLink,useRouter} from 'vue-router';
 import box from '../components/icons/box.vue'
+import ContextMenu from 'primevue/contextmenu';
+import 'primeicons/primeicons.css'
+
+
 const toggleOpen=ref(false)
 
+const menu=ref(null);
+
+const router=useRouter();
+
+const _arr = computed(()=>{
+  return props.tools.map(label => ({
+    label,
+    icon:'pi pi-wrench',
+    command: here => router.push(formatToolText(here.item.label))
+  }));
+})
+
 const toggleMenu=()=>{
+ // console.log(props.tools)
   toggleOpen.value=!toggleOpen.value
 }
 
@@ -12,8 +30,13 @@ const formatToolText=(str)=>{
   return str.toLowerCase().replace(/\s/g, '');
 }
 
+const handleContextMenu=(event)=>{
+   menu.value.show(event);
+}
+
 const props=defineProps({title:String,tools:Array})
 defineExpose({toggleOpen})
+
 </script>
 
 <template>
@@ -27,12 +50,13 @@ defineExpose({toggleOpen})
         </svg>
       </button>
       <div v-show="toggleOpen" class="origin-top-left absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 px-2 py-2">
-        <RouterLink :to="formatToolText(tool)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-greentool hover:text-white rounded-md" v-for="tool in tools" :key="tool">{{tool}}</RouterLink>
+        <RouterLink :to="formatToolText(tool)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-greentool hover:text-white rounded-md" v-for="tool in props.tools" :key="tool">{{tool}}</RouterLink>
       </div>
     </div>
     <RouterLink :to="'/'" v-show="title!='' && title!=null" class="flex bg-greentool w-36 h-9 rounded-2xl items-center justify-center text-white md:w-52 lg:w-64 font-bold">
-        <span>{{title}}  <box class="hidden md:inline"></box></span> 
-      </RouterLink>
+       <span @contextmenu="handleContextMenu">{{title}}  <box class="hidden md:inline"></box></span> 
+    </RouterLink>
+    <ContextMenu ref="menu" :model="_arr" />
 </div>
 
 </template>

@@ -1,6 +1,28 @@
 <script setup>
 import {ref,reactive,onMounted,watch} from 'vue'
-import TransformOriginInfo from './TransformOriginInfo.vue';
+import ContextMenu from 'primevue/contextmenu';
+import 'primeicons/primeicons.css'
+
+const menu=ref(null);
+
+const copyOrigin=()=>{
+    navigator.clipboard.writeText(`transformOrigin: ${imginfo.originX}% ${imginfo.originY}%`);
+
+}
+const copyBounds=()=>{
+    navigator.clipboard.writeText(`top:${imginfo.ptop},right:${imginfo.pright},bottom:${imginfo.pbottom},left${imginfo.pleft}`); 
+}
+
+const _arr = [
+    {label:'Copy Origin',icon:'pi pi-clone',command:copyOrigin},
+    {label:'Copy Bounds',icon:'pi pi-clone',command:copyBounds},
+]
+
+const handleContextMenu=(event)=>{
+   menu.value.show(event);
+}
+
+//import TransformOriginInfo from './TransformOriginInfo.vue';
 
 let imginfo={
     originX:null,
@@ -33,7 +55,7 @@ const imgObj={
 }
 
 //const commonsize=ref(true)
-const showinfo=ref(false)
+//const showinfo=ref(false)
 const image=ref(null)
 
 let isDragging=false;
@@ -168,12 +190,12 @@ const props=defineProps({img:Object,filename:String})
 
 <template>
    
-    <div class="w-80 h-fit"  @mouseenter="showinfo=!showinfo" @mouseleave="showinfo=!showinfo;isDragging=false" >
+    <div class="w-80 h-fit" @mouseleave="isDragging=false" >
        
         <span class="text-white text-xs drop-shadow-lg bg-black bg-opacity-60">{{ props.filename }}</span>
-        <TransformOriginInfo :imginfo="imginfo"  v-if="showinfo"/>
-        <canvas ref="image" class="w-full" @mousemove='moveCanvas' @mouseup="upCanvas" @mousedown="downCanvas"></canvas>
-        
+        <!-- <TransformOriginInfo :imginfo="imginfo"  v-if="showinfo"/> -->
+        <canvas ref="image" class="w-full" @contextmenu="handleContextMenu" @mousemove='moveCanvas' @mouseup="upCanvas" @mousedown="downCanvas"></canvas>
+        <ContextMenu ref="menu" :model="_arr" />
    </div>
 </template>
 

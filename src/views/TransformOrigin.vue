@@ -18,7 +18,7 @@ const onDrop=(e)=>{
         const file = files[i];
         if (validateImage(file)) {
             $toast.success('Image Added');
-            emit('closeMenuBar');
+            //emit('closeMenuBar');
             const reader = new FileReader();
             reader.onload = function(event) {
                 const img = document.createElement('img');
@@ -66,7 +66,7 @@ const onBeforeImgEnter=(el, done)=> {
 const onImgLeave=(el, done)=> {
   
 }
-const emit = defineEmits(['closeMenuBar'])
+//const emit = defineEmits(['closeMenuBar'])
 </script>
 
 <template>
