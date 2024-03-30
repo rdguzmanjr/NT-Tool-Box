@@ -12,7 +12,7 @@ app
     pt: {
     contextmenu: {
         label: {
-            class: ['leading-6', 'text-xs']
+            class: ['leading-2', 'text-xs']
         }
     }
 }})

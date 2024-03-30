@@ -3,8 +3,6 @@ import {ref,onMounted} from 'vue'
 import {useToast} from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
 import TransformOriginImg from '../components/TransformOriginImg.vue'
-import dropper from '../components/icons/dropper.vue'
-import refresh from '../components/icons/refresh.vue'
 import {gsap} from 'gsap';
 
 
@@ -70,15 +68,15 @@ const onImgLeave=(el, done)=> {
 </script>
 
 <template>
-    <div class="space-y-10">
-    <div v-if="transImages.length==0" id="dropzone" class="flex items-center justify-center h-96" @drop.prevent.stop="onDrop" @dragleave.prevent.stop="onDragLeave" @dragover.prevent.stop="onDragOver">
-        <div class="border-dashed border-2 rounded flex items-center justify-center h-1/2 w-1/2">
-        <dropper/>
-        <span class="block text-white">Drop your image files here</span>
-        </div>
+    <div class="space-y-10 h-full w-full">
+    <div v-if="transImages.length==0" id="dropzone" class="flex justify-center items-center h-full w-full" @drop.prevent.stop="onDrop" @dragleave.prevent.stop="onDragLeave" @dragover.prevent.stop="onDragOver">
+            <div class="border-dashed border-2 flex flex-col md:flex-row space-y-5 md:space-y-0 text-center space-x-3 justify-center items-center h-1/2 w-full md:w-4/6 lg:w-5/6 xl:w-1/2">
+                <span class="pi pi-upload text-2xl text-greentool"></span>
+                <span class="block text-white">Drop image files here</span>
+             </div>
     </div>
     <button v-if="transImages.length!=0" class="m-[auto] w-32 flex px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-greentool ring-1 ring-transparent rounded-md hover:ring-white" @click="handleRefresh">     
-        <refresh/>
+        <span class="pi pi-refresh text-xl"></span>
         <span class="mx-1">Refresh</span>
     </button>
   
