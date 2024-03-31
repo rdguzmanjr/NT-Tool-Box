@@ -10,7 +10,8 @@ import axios from 'axios';
 const path = ref(null);
 const loading = ref(false);
 const toast = useToast();
-const renderURL='https://restapi-neon.onrender.com';
+//const renderURL='https://restapi-neon.onrender.com';
+const renderURL='http://logsapi.test/api';
 import * as AWS from 'aws-sdk'; //fix bug import AWS from 'aws-sdk'
 const key = import.meta.env.VITE_AWS_KEY;
 const secreteKey = import.meta.env.VITE_AWS_SECRET_KEY;
@@ -47,7 +48,7 @@ const loglatest = computed(() => {
 const _invalidate=async()=>{
     try {
         loading.value=true;
-        const response = await cloudfront.createInvalidation(invalidateParams.value).promise();
+       // const response = await cloudfront.createInvalidation(invalidateParams.value).promise();
         toast.success('Successfully Invalidated');
         postLogs({logname:path.value})
         loading.value=false;
